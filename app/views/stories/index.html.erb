@@ -1,29 +1,29 @@
-<h1>Listing stories</h1>
+<%= render 'pins_index.html.erb' unless user_signed_in? %>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h1>Listing Bates Announcements</h1>
     <% @stories.each do |story| %>
-      <tr>
-        <td><%= story.title %></td>
-        <td><%= story.description %></td>
+
+  <p>
+  <span class="glyphicon glyphicon-bullhorn"> 
+    <strong>Title:</strong>
+    <%= story.title %>
+  </p>
+
+  <p class="lead">
+    <strong>Description:</strong>
+    <%= story.description %>
+    </p>
+      <br>
+      
+        <span class="glyphicon glyphicon-edit"> 
+
         <td><%= link_to 'Show', story %></td>
         <td><%= link_to 'Edit', edit_story_path(story) %></td>
         <td><%= link_to 'Destroy', story, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+  </p> 
     <% end %>
-  </tbody>
-</table>
-
 <br>
+
+
 
 <%= link_to 'New Story', new_story_path %>
